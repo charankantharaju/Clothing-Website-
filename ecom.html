@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleHub - Premium Clothing Store</title>
+  <link rel="stylesheet" href="ecom.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-tshirt"></i>
+        <span>StyleHub</span>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#men" class="nav-link">Men</a></li>
+          <li><a href="#women" class="nav-link">Women</a></li>
+          <li><a href="#accessories" class="nav-link">Accessories</a></li>
+          <li><a href="#sale" class="nav-link">Sale</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" placeholder="Search products..." id="searchInput" />
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <div class="user-icon">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="#men" onclick="closeMobileMenu()">Men</a></li>
+      <li><a href="#women" onclick="closeMobileMenu()">Women</a></li>
+      <li><a href="#accessories" onclick="closeMobileMenu()">Accessories</a></li>
+      <li><a href="#sale" onclick="closeMobileMenu()">Sale</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Discover Your Style</h1>
+      <p>Premium clothing for the modern lifestyle. Quality meets fashion in every piece.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+        <button class="btn-secondary" onclick="scrollToCategories()">Explore Collection</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-overlay"></div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <h2>Shop by Category</h2>
+      <div class="category-grid">
+        <div class="category-card" onclick="filterProducts('men')">
+          <div class="category-image"><i class="fas fa-male"></i></div>
+          <h3>Men's Fashion</h3>
+          <p>Trendy and comfortable clothing</p>
+        </div>
+        <div class="category-card" onclick="filterProducts('women')">
+          <div class="category-image"><i class="fas fa-female"></i></div>
+          <h3>Women's Fashion</h3>
+          <p>Elegant and stylish pieces</p>
+        </div>
+        <div class="category-card" onclick="filterProducts('accessories')">
+          <div class="category-image"><i class="fas fa-gem"></i></div>
+          <h3>Accessories</h3>
+          <p>Complete your look</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+          <button class="filter-btn" onclick="filterProducts('men')">Men</button>
+          <button class="filter-btn" onclick="filterProducts('women')">Women</button>
+          <button class="filter-btn" onclick="filterProducts('accessories')">Accessories</button>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid">
+        <!-- Products will be dynamically loaded here -->
+        <!-- Example:
+        <div class="product-card">
+          <span class="product-price">&#8377;4410</span>
+        </div>
+        -->
+      </div>
+      <div class="load-more">
+        <button class="btn-secondary" onclick="loadMoreProducts()">Load More Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-item">
+          <i class="fas fa-shipping-fast"></i>
+          <h3>Free Shipping</h3>
+          <p>On orders over &#8377;4410</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-undo"></i>
+          <h3>Easy Returns</h3>
+          <p>30-day return policy</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Secure Payment</h3>
+          <p>100% secure checkout</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-headset"></i>
+          <h3>24/7 Support</h3>
+          <p>Customer service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest fashion trends and exclusive offers.</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" onclick="toggleCart()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be dynamically loaded here -->
+        <!-- Example:
+        <span class="cart-product-price">&#8377;4410</span>
+        -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total: &#8377;<span id="cartTotal">0.00</span></span>
+        </div>
+        <button class="btn-primary checkout-btn" onclick="checkout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-tshirt"></i>
+            <span>StyleHub</span>
+          </div>
+          <p>Your premier destination for quality clothing and accessories. Fashion that fits your lifestyle.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#men">Men's</a></li>
+            <li><a href="#women">Women's</a></li>
+            <li><a href="#accessories">Accessories</a></li>
+            <li><a href="#sale">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> RajajiNagar Bengaluru Karnataka, India</p>
+            <p><i class="fas fa-phone"></i> +91 9901292289</p>
+            <p><i class="fas fa-envelope"></i> charankantharaju07@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 StyleHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="ecom.js"></script>
+</body>
+</html>
